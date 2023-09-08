@@ -96,7 +96,7 @@
 	</div>
 
 <div  class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
+	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 		  <div class="modal-header">
 			
@@ -162,7 +162,7 @@
 			<button type="button" class="btn btn-danger text-center" style="margin-bottom:0">C'est parti</button>
 		  </div> -->
 		</div>
-	  </div>
+	</div>
 </div>
 		
 	
@@ -200,6 +200,11 @@
 				cop.style.display = "block";
 				copp.style.display = "none";
 				Bmod.style.marginLeft="150px";
+				if (hdr.style.display === "none") {
+					
+				} else {
+					hdr.style.display = "none";
+				}
 			} else {
 				openNav();
 				openBtn.style.display = "none";
@@ -243,6 +248,7 @@
 		}
 
 		function validateForm(){
+			var Bmod= document.getElementById('btnMod');
 			var fname = document.forms["Form"]["Prenoms"]; 
 			var name = document.forms["Form"]["Nom"];
 			var email = document.forms["Form"]["Email"];    
@@ -309,6 +315,11 @@
 				return false; 
 			}
 
+			if(Bmod.innerText =="Fermer"){
+				//Acceuil.link();
+				location.href="?inscription reussie/";
+				return false;
+			}
 			
 			
 			formsuccess()
