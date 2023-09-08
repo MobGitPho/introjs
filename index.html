@@ -4,7 +4,7 @@
   <title>GameOn</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./css/filecss.css">
+  <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -31,13 +31,24 @@
 		<div class="row">
 			<div class=" myNavbar header">
 				<a id="logos" class="navbar-brand logo">GameOn</a>
-					<div class="header-right">
+					<div>
+						<a href="javascript:void(0);" id="openBtn" onclick="openNav()">
+						  <span class="burger-icon">
+							<span></span>
+							<span></span>
+							<span></span>
+						  </span>
+						</a>
+					</div> 
+					
+					<div id="headerright" class="header-right">
 						<a class="active" href="#">Détails de l'évènement</a>
 						<a href="">A propos</a>
 						<a href="">Contact</a>
 						<a href="">Evènements passés</a>
+						
 					</div>
-					  
+					
 			</div>	
 			
 		</div>
@@ -159,8 +170,9 @@
 	<script >
 		var x = window.matchMedia("(max-width: 500px)")
 		SizeScreen(x) 
-		x.addListener(SizeScreen) 
+		x.addListener(SizeScreen);
 
+		
 		function SizeScreen(x) {
 			var element = document.getElementById("principe");
 			var hid = document.getElementById("principe2");
@@ -170,39 +182,64 @@
 			var copp= document.getElementById('copp');
 			var FormS= document.getElementById('FormS');
 			var Bmod= document.getElementById('btnMod');
-		  if (x.matches) { 
+			var openBtn = document.getElementById("openBtn");
+			var hdr = document.getElementById("headerright");
+						
+			if (x.matches) { 
+				openBtn.style.display = "block";
+				openBtn.style.float = "right";
+			 
+				openNav();
+			 
+			 
+				element.style.display = "none";
+				hid.style.display = "block";
+				box.style.display = "none";
 			
-			 element.style.display = "none";
-			 hid.style.display = "block";
-			 box.style.display = "none";
-			// box. style. top = '150px' ;
-			 boxD.style.display = "block";
-			 cop.style.display = "block";
-			 copp.style.display = "none";
-			Bmod.style.marginLeft="150px";
-		  } else {
-			  element.style.display = "block";
-			  hid.style.display = "none";
-			  box.style.display = "block";
-			  //box. style. top = '10px' ;
-			  boxD.style.display = "none";
-			  cop.style.display = "none";
-			  copp.style.display = "block";
-			 Bmod.style.marginLeft="200px";
-		  }
+				boxD.style.display = "block";
+				cop.style.display = "block";
+				copp.style.display = "none";
+				Bmod.style.marginLeft="150px";
+			} else {
+				openNav();
+				openBtn.style.display = "none";
+				element.style.display = "block";
+				hid.style.display = "none";
+				box.style.display = "block";
+			 
+				boxD.style.display = "none";
+				cop.style.display = "none";
+				copp.style.display = "block";
+				Bmod.style.marginLeft="200px";
+			
+				if (hdr.style.display === "block") {
+				
+				} else {
+					hdr.style.display = "block";
+				}
+			}
 		}
-
+		
+		function openNav() {
+			var x = document.getElementById("headerright");
+			
+			if (x.style.display === "block") {
+				x.style.display = "none";
+			} else {
+				x.style.display = "block";
+			}
+		}
 	
 		function validateDate() {
 			var testdate=document.getElementById('Dtn').value;
 			
-				var date_regex = /^((0?[1-9]|1[012])[/](0?[1-9]|[12][0-9]|3[01])[/](19|20)?[0-9]{2})*$/ ;
-				//alert(date_regex.test(testdate));
-				if(date_regex.test(testdate) == true){
-					document.getElementById("fDtn").innerHTML ="";
-				}else{
-					document.getElementById("fDtn").innerHTML = "Mettez une date de naissance valide 00/00/0000.";
-				}
+			var date_regex = /^((0?[1-9]|1[012])[/](0?[1-9]|[12][0-9]|3[01])[/](19|20)?[0-9]{2})*$/ ;
+				
+			if(date_regex.test(testdate) == true){
+				document.getElementById("fDtn").innerHTML ="";
+			}else{
+				document.getElementById("fDtn").innerHTML = "Mettez une date de naissance valide 00/00/0000.";
+			}
 		}
 
 		function validateForm(){
@@ -217,8 +254,7 @@
 			var FormS= document.getElementById('FormS');
 			
 			
-			 if (fname.value == "" || (fname.value.length <= 3)){ 
-				//alert("Mettez votre nom."); 
+			if (fname.value == "" || (fname.value.length <= 3)){ 
 				document.getElementById("fNom").innerHTML = "Mettez votre prenoms.";
 				fname.focus(); 
 				return false; 
@@ -242,20 +278,7 @@
 			}else{
 				document.getElementById("femail").innerHTML = "";
 			}   
-			/*if (email.value.indexOf("@", 0) < 0) {
-			  document.getElementById("femail").innerHTML = "Mettez une adresse email valide.";
-			  email.focus();
-			  return false;
-			}else{
-				document.getElementById("femail").innerHTML = "";
-			}
-			 if (email.value.indexOf(".", 0) < 0) {
-			  document.getElementById("femail").innerHTML = "Mettez une adresse email valide.";
-			  email.focus();
-			  return false;
-			}else{
-				document.getElementById("femail").innerHTML = "";
-			}*/
+			
 			if (Dtn.value == "" ){ 
 				document.getElementById("fDtn").innerHTML = "Mettez votre année de naissance.";
 				Dtn.focus(); 
@@ -333,10 +356,7 @@
 			}
 			return false;
 		}
-		/*$('#myModal').on('shown.bs.modal', function () {
-		  $('#myInput').trigger('focus')
-		})*/
-
+		
 	</script>
 </body>
 	
