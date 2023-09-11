@@ -26,13 +26,13 @@
   </style>
 </head>
 <body>
-
+	<div id="overlay" onclick="off()"></div>
 	<div  class="container">
 		<div class="row">
-			<div class=" myNavbar header">
+			<div  class=" myNavbar header">
 				<a id="logos" class="navbar-brand logo">GameOn</a>
-					<div>
-						<a href="javascript:void(0);" id="openBtn" onclick="openNav()">
+					<div onclick="on()">
+						<a href="javascript:void(0);" id="openBtn" onclick="openNav()" >
 						  <span class="burger-icon">
 							<span></span>
 							<span></span>
@@ -184,13 +184,13 @@
 			var Bmod= document.getElementById('btnMod');
 			var openBtn = document.getElementById("openBtn");
 			var hdr = document.getElementById("headerright");
-						
+			var y= document.getElementById("overlay");
+			
 			if (x.matches) { 
 				openBtn.style.display = "block";
 				openBtn.style.float = "right";
 			 
 				openNav();
-			 
 			 
 				element.style.display = "none";
 				hid.style.display = "block";
@@ -201,9 +201,10 @@
 				copp.style.display = "none";
 				Bmod.style.marginLeft="150px";
 				if (hdr.style.display === "none") {
-					
+					y.style.display = "none";
 				} else {
 					hdr.style.display = "none";
+					y.style.display = "none";
 				}
 			} else {
 				openNav();
@@ -218,23 +219,31 @@
 				Bmod.style.marginLeft="200px";
 			
 				if (hdr.style.display === "block") {
-				
+					y.style.display = "none";
 				} else {
 					hdr.style.display = "block";
+					y.style.display = "none";
 				}
 			}
 		}
 		
 		function openNav() {
 			var x = document.getElementById("headerright");
-			
-			if (x.style.display === "block") {
+			var y= document.getElementById("overlay");
+			if ((x.style.display === "block") ) {
 				x.style.display = "none";
+				y.style.display = "none";
 			} else {
 				x.style.display = "block";
+				y.style.display = "block";
 			}
 		}
-	
+		
+		function off() {
+			document.getElementById("headerright").style.display = "none";
+			document.getElementById("overlay").style.display = "none";
+		}
+		
 		function validateDate() {
 			var testdate=document.getElementById('Dtn').value;
 			
@@ -243,7 +252,7 @@
 			if(date_regex.test(testdate) == true){
 				document.getElementById("fDtn").innerHTML ="";
 			}else{
-				document.getElementById("fDtn").innerHTML = "Mettez une date de naissance valide 00/00/0000.";
+				document.getElementById("fDtn").innerHTML = "Mettez une date de naissance valide dd/mm/AAAA.";
 			}
 		}
 
