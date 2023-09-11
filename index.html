@@ -4,7 +4,7 @@
   <title>GameOn</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/filecss.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -28,7 +28,7 @@
 <body>
 	<div id="overlay" onclick="off()"></div>
 	<div  class="container">
-		<div class="row">
+		<div  class="row">
 			<div  class=" myNavbar header">
 				<a id="logos" class="navbar-brand logo">GameOn</a>
 					<div onclick="on()">
@@ -53,14 +53,14 @@
 			
 		</div>
 		<div  id="principe" class="fakeimg row">
-			<div id="" class="">
+			<div  class="">
 				<div class="paraph">
 					<h1 class="titl"> Marathon national  de jeux vidéos</h1>
 				</div>
 			    <div class="paraphT">
 					<p> Vous aimez jouer? Notre prochain évènement gaming est ouvert aux réservations... Places limitées!</p>		
 				</div>
-				<button type="button" id="BtnJ" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalLong">Je M'inscris</button>
+				<button type="button" id="BtnJ" onclick="rowrespo()" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalLong">Je M'inscris</button>
 				
 			</div>
 			
@@ -96,6 +96,9 @@
 	</div>
 
 <div  class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div id="rowRes" class="rowResp">
+		
+	</div>
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 		  <div class="modal-header">
@@ -174,6 +177,7 @@
 
 		
 		function SizeScreen(x) {
+			
 			var element = document.getElementById("principe");
 			var hid = document.getElementById("principe2");
 			var box = document.getElementById('BtnJ');
@@ -187,11 +191,12 @@
 			var y= document.getElementById("overlay");
 			
 			if (x.matches) { 
+				
 				openBtn.style.display = "block";
 				openBtn.style.float = "right";
 			 
 				openNav();
-			 
+				
 				element.style.display = "none";
 				hid.style.display = "block";
 				box.style.display = "none";
@@ -227,6 +232,13 @@
 			}
 		}
 		
+	
+		function rowrespo(){
+			var rowResp  = document.getElementById("rowRes");
+			rowResp.classlist.add("myNavbar header");
+		
+		}
+
 		function openNav() {
 			var x = document.getElementById("headerright");
 			var y= document.getElementById("overlay");
