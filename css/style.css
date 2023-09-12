@@ -1,7 +1,15 @@
+body {
+  margin-left: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .navbar {
   overflow: auto;
   background-color: #ffffff;
-  padding: 20px 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: 30px;
 }
 
 .burger-icon span {
@@ -68,20 +76,20 @@
   width: 1130px;
   height: 400px;
   margin: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   /*border:1px solid rgb(214, 26, 152);*/
   box-shadow: 0px 8px #d6d6c2;
   border-radius: 5px;
 }
 #principe .princmain {
-  margin-top: 150px;
+  margin-top: 100px;
   margin-left: 10px;
   /*border:1px solid yellow;*/
   width: 300px;
   height: 140px;
 }
 #principe .princmain.paraph {
-  margin-top: 210px;
+  margin-top: 50px;
   margin-left: 10px;
   /*border:1px solid red; */
   width: 450px;
@@ -89,7 +97,6 @@
 }
 #principe .princmain.paraphT {
   padding-top: 10px;
-  margin: 10px;
   width: 250px;
   height: 80px;
   border: 1px solid green;
@@ -100,7 +107,7 @@
 }
 
 .copleft {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .paraph h1.titl {
@@ -109,6 +116,7 @@
 
 .paraphT p {
   font-size: 15px;
+  margin-top: 50px;
   color: white;
 }
 
@@ -157,6 +165,16 @@
 }
 
 input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  resize: vertical;
+}
+
+input[type=date] {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
